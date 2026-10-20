@@ -2,7 +2,13 @@
 
 A free, source-available Agent Skill for 30–45 second English vertical knowledge videos. Explain one mechanism with a navy drafting grid, cyan signals and amber bottlenecks.
 
-**Download and examples:** https://feedskills.com/skills/blueprint-explainer/
+**Download:** https://github.com/ChaojiTech/blueprint-explainer/releases/tag/v0.1.0
+
+The FeedSkills website listing is queued for deployment. Until it is live, install through the official FeedSkills CLI release (it includes this Skill for offline fallback):
+
+```sh
+npx --yes --package=https://github.com/ChaojiTech/blueprint-explainer/releases/download/v0.1.0/feedskills-0.1.1.tgz feedskills install blueprint-explainer --agent codex
+```
 
 Read [SKILL.md](SKILL.md) for the workflow and [input contract](references/input-contract.md) for supported inputs. Try [queues](examples/queue.json) or [caching](examples/cache.json).
 
