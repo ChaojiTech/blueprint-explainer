@@ -1,0 +1,153 @@
+{
+  "title": "Why queues keep growing",
+  "summary": "A tiny queue experiment: three requests arrive each second, but only two finish. Matching the arrival rate stops new growth; spare capacity clears the backlog.",
+  "sources": [
+    {
+      "title": "MIT OpenCourseWare: Capacity",
+      "url": "https://www.ocw.mit.edu/courses/15-760b-introduction-to-operations-management-spring-2004/16dde953a29f89a4d2018361900ce886_lec3_capacity.pdf",
+      "note": "Background only. The numbers are an original deterministic example: start empty, add 3 requests and finish up to 2 each tick. No random arrivals or claim about a measured system."
+    }
+  ],
+  "scenes": [
+    {
+      "tag": "01 / THE QUESTION",
+      "headline": "Why does the queue keep growing?",
+      "caption": "The worker is busy. The line still gets longer.",
+      "narration": "The worker never stops. So why does the queue keep getting longer?",
+      "duration": 6,
+      "visual": {
+        "type": "flow",
+        "items": [
+          {
+            "label": "ARRIVE",
+            "value": "3 / sec",
+            "amount": 3
+          },
+          {
+            "label": "WAIT",
+            "value": "?",
+            "amount": 1,
+            "tone": "amber"
+          },
+          {
+            "label": "FINISH",
+            "value": "2 / sec",
+            "amount": 2
+          }
+        ],
+        "note": "A simplified model \u00b7 start with an empty queue"
+      }
+    },
+    {
+      "tag": "02 / THE MISMATCH",
+      "headline": "One request stays behind.",
+      "caption": "Each second: 3 arrive, 2 finish, 1 waits.",
+      "narration": "Three requests arrive each second. Only two finish. Every second leaves one request behind.",
+      "duration": 8,
+      "visual": {
+        "type": "bars",
+        "items": [
+          {
+            "label": "ARRIVE / SECOND",
+            "value": "3",
+            "amount": 3
+          },
+          {
+            "label": "FINISH / SECOND",
+            "value": "2",
+            "amount": 2
+          },
+          {
+            "label": "LEFT WAITING",
+            "value": "+1",
+            "amount": 1,
+            "tone": "amber"
+          }
+        ],
+        "note": "Add arrivals first, then process requests each tick"
+      }
+    },
+    {
+      "tag": "03 / TEN SECONDS LATER",
+      "headline": "Small gaps become a backlog.",
+      "caption": "30 arrived. 20 finished. 10 are still waiting.",
+      "narration": "After ten seconds, thirty arrived and twenty finished. Ten requests are still waiting.",
+      "duration": 7,
+      "visual": {
+        "type": "equation",
+        "items": [
+          {
+            "label": "ARRIVED",
+            "value": "30",
+            "amount": 0
+          },
+          {
+            "label": "FINISHED",
+            "value": "\u221220",
+            "amount": 0
+          },
+          {
+            "label": "WAITING",
+            "value": "10",
+            "amount": 10,
+            "tone": "amber"
+          }
+        ],
+        "note": "30 + (\u221220) = 10 requests in the queue"
+      }
+    },
+    {
+      "tag": "04 / CHANGE ONE THING",
+      "headline": "Give the worker spare capacity.",
+      "caption": "Keep arrivals at 3/sec. Raise capacity to 4/sec.",
+      "narration": "Keep arrivals at three, but raise capacity to four. Now the backlog shrinks by one each second.",
+      "duration": 8,
+      "visual": {
+        "type": "bars",
+        "items": [
+          {
+            "label": "ARRIVE / SECOND",
+            "value": "3",
+            "amount": 3
+          },
+          {
+            "label": "CAPACITY / SECOND",
+            "value": "4",
+            "amount": 4
+          },
+          {
+            "label": "BACKLOG CHANGE",
+            "value": "\u22121 / sec",
+            "amount": 1,
+            "tone": "amber"
+          }
+        ],
+        "note": "The 10-request backlog clears after 10 more ticks"
+      }
+    },
+    {
+      "tag": "05 / KEEP THIS DISTINCTION",
+      "headline": "Match to hold. Exceed to clear.",
+      "caption": "Matching arrivals stops growth. Spare capacity clears the line.",
+      "narration": "Matching the arrival rate stops new growth. Spare capacity is what clears the existing line.",
+      "duration": 7,
+      "visual": {
+        "type": "flow",
+        "items": [
+          {
+            "label": "CAPACITY = ARRIVALS",
+            "value": "Hold",
+            "amount": 0,
+            "tone": "amber"
+          },
+          {
+            "label": "CAPACITY > ARRIVALS",
+            "value": "Clear",
+            "amount": 0
+          }
+        ],
+        "note": "In this fixed-rate model \u00b7 real arrivals can vary"
+      }
+    }
+  ]
+}

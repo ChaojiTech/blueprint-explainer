@@ -1,0 +1,18 @@
+{
+  "title": "Why a cache saves repeat work",
+  "summary": "Follow three requests for the same item: fetch once, reuse twice. A cache hit avoids a trip to the origin, provided the cached value is still valid.",
+  "sources": [
+    {
+      "title": "MDN HTTP caching",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching",
+      "note": "A simplified fresh-cache example. Three sequential requests for one item; the value stays valid. No universal latency or hit-rate promise."
+    }
+  ],
+  "scenes": [
+    {"tag": "01 / THE QUESTION", "headline": "Why fetch the same thing twice?", "caption": "Three requests. One unchanged item.", "duration": 6, "visual": {"type": "flow", "items": [{"label": "REQUEST", "value": "Item A", "amount": 0}, {"label": "ORIGIN", "value": "Item A", "amount": 0, "tone": "amber"}], "note": "Assume the item stays fresh throughout this example"}},
+    {"tag": "02 / FIRST REQUEST", "headline": "A miss takes the long route.", "caption": "The cache is empty. Fetch the item from the origin.", "duration": 8, "visual": {"type": "flow", "items": [{"label": "REQUEST", "value": "A", "amount": 0}, {"label": "CACHE", "value": "Miss", "amount": 0, "tone": "amber"}, {"label": "ORIGIN", "value": "Fetch A", "amount": 0}], "note": "Store a reusable copy after the origin responds"}},
+    {"tag": "03 / REPEAT REQUEST", "headline": "A hit skips the origin.", "caption": "The fresh copy answers the next request directly.", "duration": 8, "visual": {"type": "flow", "items": [{"label": "REQUEST", "value": "A again", "amount": 0}, {"label": "CACHE", "value": "Hit", "amount": 0}], "note": "Origin bypassed · no second origin fetch"}},
+    {"tag": "04 / COUNT THE WORK", "headline": "One fetch. Two reuses.", "caption": "For these three requests, the origin only works once.", "duration": 8, "visual": {"type": "bars", "items": [{"label": "TOTAL REQUESTS", "value": "3", "amount": 3}, {"label": "ORIGIN FETCHES", "value": "1", "amount": 1, "tone": "amber"}, {"label": "CACHE HITS", "value": "2", "amount": 2}], "note": "Illustrative counts, not a promised hit rate"}},
+    {"tag": "05 / THE CONDITION", "headline": "Reuse only while it is valid.", "caption": "Expired or changed data needs a freshness decision.", "duration": 6, "visual": {"type": "flow", "items": [{"label": "FRESH", "value": "Reuse", "amount": 0}, {"label": "STALE", "value": "Check", "amount": 0, "tone": "amber"}], "note": "Real caching also needs freshness and invalidation rules"}}
+  ]
+}

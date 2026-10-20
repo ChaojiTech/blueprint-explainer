@@ -1,0 +1,14 @@
+{
+  "id": "blueprint-explainer",
+  "title": "Blueprint Lab",
+  "description": "Make a 30–45 second vertical knowledge video with animated diagrams, editable scenes and a local HyperFrames export.",
+  "version": "0.1.0",
+  "category": "Knowledge videos",
+  "targetPlatform": ["Codex", "macOS · Node.js 22+ · FFmpeg"],
+  "cliCommand": "unzip blueprint-explainer-0.1.0.zip -d .agents/skills",
+  "pricingTier": "free",
+  "author": "FeedSkills",
+  "tags": ["Explainer", "Blueprint", "Vertical video"],
+  "updatedAt": "2026-10-20",
+  "featured": true
+}
